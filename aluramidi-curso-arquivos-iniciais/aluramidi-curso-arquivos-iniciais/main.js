@@ -1,6 +1,22 @@
-function tocaSom (idElementoAudio){
-    document.querySelector(idElementoAudio).play();
+function tocaSom (seletorAudio){
+    const elemento = document.querySelector(seletorAudio);
 
+    if(elemento === null){
+
+        console.log('Elemento não encontrado')
+
+    }
+
+    if(elemento != null){
+
+        
+        //elemento.play();
+
+        if(elemento.localName === 'audio'){
+            elemento.play();
+        }
+
+    }
 }
 
 const listaDeTeclas = document.querySelectorAll('.tecla');//Const que tem todos as teclas do CSS armazenadas
@@ -21,15 +37,13 @@ for(let contador = 0; contador < listaDeTeclas.length; contador++){
 
     tecla.onkeydown = function(evento){
 
-        console.log(evento);
-
-        if(evento.code === 'Space'){
+        if(evento.code === 'Space' || evento.code === 'Enter'){
             tecla.classList.add('ativa');
         }
 
     }
   
-    tecla.onkeyup = function(evento){
+    tecla.onkeyup = function(){
         tecla.classList.remove('ativa');
     }
 
