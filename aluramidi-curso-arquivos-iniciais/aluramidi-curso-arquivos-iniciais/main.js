@@ -1,16 +1,22 @@
-function tocaSomPom(){
-    document.querySelector('#som_tecla_pom').play();
+function tocaSom (idElementoAudio){
+    document.querySelector(idElementoAudio).play();
 
 }
 
-const listaDeTeclas = document.querySelectorAll('.tecla');
+const listaDeTeclas = document.querySelectorAll('.tecla');//Const que tem todos as teclas do CSS armazenadas
 
 let contador = 0;
 
-while(contador < listaDeTeclas.length){
-    listaDeTeclas[contador].onclick = tocaSomPom;
+//para
+for(let contador = 0; contador < listaDeTeclas.length; contador++){
 
-    contador++;
+    const tecla = listaDeTeclas[contador];//Renomeou o nome da const "listaDeTeclas" para "tecla"
+    const instrumento = tecla.classList[1];
 
-    console.log(contador);
+    const idAudio = `#som_${instrumento}`;
+    
+    listaDeTeclas[contador].onclick = function (){
+        tocaSom(idAudio);
+    }
+  
 }
